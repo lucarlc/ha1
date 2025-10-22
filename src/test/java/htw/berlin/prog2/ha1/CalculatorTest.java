@@ -106,5 +106,20 @@ class CalculatorTest {
 
         assertEquals("0", calc.readScreen(), "CE clicked soll die Anzeige auf 0 setzen");
     }
+    @Test
+    @DisplayName("should show Error when dividing a negative number by zero")
+    void shouldShowErrorOnNegativeDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(7);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        assertEquals("Error", calc.readScreen());
+    }
 }
 
