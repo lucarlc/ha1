@@ -90,5 +90,21 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("CE nach einem Ergebnis setzt die Anzeige auf 0")
+    void testClearAfterResultsShowsZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        assertEquals("5", calc.readScreen(), "Vorbedingung: Ergebnis sollte 5 sein");
+
+        calc.pressClearKey();
+
+        assertEquals("0", calc.readScreen(), "CE clicked soll die Anzeige auf 0 setzen");
+    }
 }
 
