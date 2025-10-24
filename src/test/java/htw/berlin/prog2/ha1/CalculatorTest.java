@@ -121,5 +121,20 @@ class CalculatorTest {
 
         assertEquals("Error", calc.readScreen());
     }
+    @Test
+    @DisplayName("after Error, entering a digit starts a new number")
+    void digitAfterErrorStartsNewEntry() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        assertEquals("Error", calc.readScreen());
+
+        calc.pressDigitKey(3);
+        assertEquals("3", calc.readScreen());
+    }
+
 }
 
